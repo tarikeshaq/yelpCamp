@@ -18,10 +18,8 @@ var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     authRoutes = require("./routes/auth");
     
-    console.log(process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
-// mongoose.connect("mongodb://Tarik:tarkuish@ds127983.mlab.com:27983/yelpcamp-tarik", {useMongoClient: true});
-//mongodb://Tarik:tarkuish@ds127983.mlab.com:27983/yelpcamp-tarik
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_13";
+mongoose.connect(url, {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
